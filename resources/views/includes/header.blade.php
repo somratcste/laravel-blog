@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
 
     <div class="navbar-header">
@@ -8,16 +8,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="{{ route('home') }}">Home</a>
+      <a class="navbar-brand" href="{{ route('blog.index') }}">Blog</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="{{ route('admin.login') }}">Admin</a></li>
-        @if(Auth::check())
-        	<li><a href="{{ route('admin.logout') }}">Logout</a></li>
-        @endif
+        <li><a href="{{ route('about') }}">About</a></li>     
+        <li><a href="{{ route('contact') }}">Contact</a></li>
       </ul>
     </div>
   </div>

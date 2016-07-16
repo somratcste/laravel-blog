@@ -8,11 +8,17 @@
 	</head>
 	<body>
 		<div class="container">
-			@include('includes.header')
-			<div class="main">
+			<div class="row">
+				@include('includes.header')
+			</div>
+			
+			<div class="row main">
 				@yield('content')
+			</div>
+
+			<div class="row">
+				@include('includes.footer')
 			</div>
 		</div>
 	</body>
-	@include('includes.footer')
 </html>
