@@ -7,7 +7,7 @@
  			<div class="post">			
 	 			<div class="header">
 	 				<a href="{{ route('admin.blog.create_post') }}"><button type="button" class="btn btn-primary">New Post</button></a>
-					<button type="button" class="btn btn-primary">Show all Posts</button>
+					<a href="{{ route('admin.posts') }}"><button type="button" class="btn btn-primary">Show all Posts</button></a>
 	 			</div>
 	 			@if(count($posts) == 0)
 	 				<div class="post_body">

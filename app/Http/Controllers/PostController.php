@@ -23,7 +23,8 @@ class PostController extends Controller
 
 	public function getPosts()
 	{
-		return view('admin.posts');
+		$posts = Post::orderBy('created_at' , 'desc')->paginate(5);
+		return view('admin.posts' , ['posts' => $posts]);
 	}
 
 	public function getNewPost()
