@@ -9,7 +9,8 @@ class PostController extends Controller
 {
 	public function getBlogIndex()
 	{
-		return view('frontend.blog.index');
+		$posts = Post::orderBy('created_at' , 'desc')->paginate(5);
+		return view('frontend.blog.index' , ['posts' => $posts]);
 	}
 
 	public function getSinglePost($post_id , $end = 'frontend')
