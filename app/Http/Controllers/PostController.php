@@ -10,6 +10,9 @@ class PostController extends Controller
 	public function getBlogIndex()
 	{
 		$posts = Post::orderBy('created_at' , 'desc')->paginate(5);
+		foreach ($posts as $post ) {
+			$post->body = $this->shortenText($post->body , 50);
+		}
 		return view('frontend.blog.index' , ['posts' => $posts]);
 	}
 
@@ -53,5 +56,15 @@ class PostController extends Controller
 		return view('admin.blog.edit_post');
 	}  
 
+	public function shortenText($text , $words_count)
+	{
+		if(str_word_count($text , 0) > $words_count)
+		{
+			$words = str_word_count($text , 2);
+			$pos = array_keys($words);
+			$text = substr($text , 0 , $pos[$words_count]) . '.....' ;
+		}
+		return $text;
+	}
 
 }
