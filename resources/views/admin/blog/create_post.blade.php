@@ -12,14 +12,14 @@
 			<div class="form-group">
 				<label for="inputEmail3" class="col-sm-2 control-label">Title</label>
 				<div class="col-sm-5">
-				  <input type="text" class="form-control" id="inputEmail3" name="title" placeholder="Title">
+				  <input type="text" class="form-control" id="inputEmail3" name="title" placeholder="Title" value="{{ Request::old('title') }}" >
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label for="inputEmail3" class="col-sm-2 control-label">Author</label>
 				<div class="col-sm-5">
-				  <input type="text" class="form-control" id="inputEmail3" name="author" placeholder="Author">
+				  <input type="text" class="form-control" id="inputEmail3" name="author" placeholder="Author" value="{{ Request::old('author') }}" >
 				</div>
 			</div>
 
@@ -42,7 +42,7 @@
 			<div class="form-group">
 				<label for="inputEmail3" class="col-sm-2 control-label">Description</label>
 				<div class="col-sm-5">
-				 <textarea name="body" class="form-control" rows="8" placeholder="Description"></textarea>
+				 <textarea name="body" class="form-control" rows="8" placeholder="Description">{{ Request::old('body') }}</textarea>
 				</div>
 			</div>
 

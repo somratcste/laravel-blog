@@ -2,8 +2,9 @@
 
 @section('content')
  	<div class="row">
+ 		@include('includes.info-box')
  		<div class="col-md-6">
- 			<div class="post">
+ 			<div class="post">			
 	 			<div class="header">
 	 				<a href="{{ route('admin.blog.create_post') }}"><button type="button" class="btn btn-primary">New Post</button></a>
 					<button type="button" class="btn btn-primary">Show all Posts</button>
