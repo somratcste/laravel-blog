@@ -34,4 +34,32 @@ Route::group(['middleware' => ['web']] , function() {
     	'as' => 'contact'
     ]);
 
+    Route::group(['prefix' => '/admin'] , function() {
+
+        Route::get('/' , [
+            'uses' => 'AdminController@getIndex',
+            'as' => 'admin.index'
+        ]);
+
+        Route::get('/categories' , [
+            'uses' => 'AdminController@getCategories',
+            'as' => 'admin.categories'
+        ]);
+
+        Route::get('/posts' , [
+            'uses' => 'PostController@getPosts',
+            'as' => 'admin.posts'
+        ]);
+
+        Route::get('/posts/create' , [
+            'uses' => 'PostController@createNewPost',
+            'as' => 'admin.create_post'
+        ]);
+
+        Route::get('/posts/edit' , [
+            'uses' => 'PostController@editPost',
+            'as' => 'admin.edit_post'
+        ]);
+    });
+
 });
