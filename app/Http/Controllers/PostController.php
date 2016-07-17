@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
 
 class PostController extends Controller 
 {
@@ -19,10 +20,16 @@ class PostController extends Controller
 		return view('admin.posts');
 	}
 
-	public function createNewPost()
+	public function getNewPost()
 	{
 		return view('admin.blog.create_post');
 	}
+
+	public function postNewPost(Request $request)
+	{
+		
+	}
+
 
 	public function editPost()
 	{

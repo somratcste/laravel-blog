@@ -52,13 +52,18 @@ Route::group(['middleware' => ['web']] , function() {
         ]);
 
         Route::get('/posts/create' , [
-            'uses' => 'PostController@createNewPost',
-            'as' => 'admin.create_post'
+            'uses' => 'PostController@getNewPost',
+            'as' => 'admin.blog.create_post'
+        ]);
+
+        Route::post('/post/create' , [
+            'uses' => 'PostController@postNewPost',
+            'as' => 'admin.blog.post.create'
         ]);
 
         Route::get('/posts/edit' , [
             'uses' => 'PostController@editPost',
-            'as' => 'admin.edit_post'
+            'as' => 'admin.blog.edit_post'
         ]);
     });
 
