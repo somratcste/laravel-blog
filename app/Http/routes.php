@@ -76,7 +76,7 @@ Route::group(['middleware' => ['web']] , function() {
             'as' => 'admin.blog.post.delete'
         ]);
 
-        Route::get('/blog/categories' , [
+        Route::get('/categories' , [
             'uses' => 'CategoryController@getCategoryIndex',
             'as' => 'admin.blog.categories'
         ]);
