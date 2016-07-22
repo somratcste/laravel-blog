@@ -18,13 +18,17 @@ class PostController extends Controller
 
 	public function getSinglePost($post_id , $end = 'frontend')
 	{
-		return view($end . 'blog.single');
+		$post = Post::find($post_id);
+		if(!$post){
+			return redirect()->route('blog.index')->with(['fail' => 'Page not found !']);
+		}
+		return view($end . '.blog.single' , ['post' => $post]);
 	}
 
 	public function getPosts()
 	{
 		$posts = Post::orderBy('created_at' , 'desc')->paginate(5);
-		return view('admin.posts' , ['posts' => $posts]);
+		return view('admin.blog.posts' , ['posts' => $posts]);
 	}
 
 	public function getNewPost()

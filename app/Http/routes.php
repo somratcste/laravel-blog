@@ -18,7 +18,7 @@ Route::group(['middleware' => ['web']] , function() {
     	'as' => 'blog.index'
     ]);
 
-    Route::get('/blog/{post_id}' , [
+    Route::get('/blog/{post_id}&{end}' , [
     	'uses' => 'PostController@getSinglePost',
     	'as' => 'blog.single'
     ]);
@@ -48,7 +48,7 @@ Route::group(['middleware' => ['web']] , function() {
 
         Route::get('/posts' , [
             'uses' => 'PostController@getPosts',
-            'as' => 'admin.posts'
+            'as' => 'admin.blog.posts'
         ]);
 
         Route::get('/posts/create' , [
@@ -65,6 +65,12 @@ Route::group(['middleware' => ['web']] , function() {
             'uses' => 'PostController@editPost',
             'as' => 'admin.blog.edit_post'
         ]);
+
+        Route::get('/blog/post/{post_id}&{end}' , [
+            'uses' => 'PostController@getSinglePost',
+            'as' => 'admin.blog.single'
+        ]);
+        
     });
 
 });

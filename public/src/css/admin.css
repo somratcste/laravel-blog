@@ -57,3 +57,7 @@ body {
 .btn {
 	margin-top: 5px;
 }
+
+.post_des {
+	text-align: justify;
+}

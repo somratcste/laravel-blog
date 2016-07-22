@@ -5,12 +5,13 @@
 @endsection
  
  @section('content')
+ 	@include('includes.info-box')
  	@foreach ($posts as $post)
  		<div class="post">
 			<h4>{{ $post->title }}</h4>
 			<p class="post_info">{{ $post->author }} | {{ $post->created_at }}</p>
 			<p class="post_des">{{ $post->body }}</p>
-			<a class="read_more" href="">Read more</a>
+			<a class="read_more" href="{{ route('blog.single' , ['post_id' => $post->id  , 'end' => 'frontend']) }}">Read more</a>
 		</div>
  	@endforeach
 	<section>
