@@ -96,4 +96,15 @@ class PostController extends Controller
 
 	}
 
+	public function getDeletePost($post_id)
+	{
+		$post = Post::find($post_id);
+		if(!$post){
+			return redirect()->route('blog.index')->with(['fail' => 'Page not found !']);
+		}
+		$post->delete();
+		return redirect()->route('admin.index')->with(['success' => 'Post Deleted Successfully !']);
+
+	}
+
 }

@@ -3,8 +3,8 @@
 	<div class="row">
 		<div class="post">			
 			<div class="header">
-				<a href=""><button type="button" class="btn btn-primary">Edit Post</button></a>
-				<a href=""><button type="button" class="btn btn-primary">Delete Post</button></a>
+				<a href="{{ route('admin.blog.post.edit' , ['post_id' => $post->id]) }}"><button type="button" class="btn btn-primary">Edit Post</button></a>
+				<a href="{{ route('admin.blog.post.delete' , ['post_id' => $post->id ]) }}"><button type="button" class="btn btn-primary">Delete Post</button></a>
 			</div>
 			<div class="post_body">
  				<h4>{{ $post->title }}</h4>
