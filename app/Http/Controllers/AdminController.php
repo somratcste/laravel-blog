@@ -10,11 +10,5 @@ class AdminController extends Controller
 		$posts = Post::orderBy('created_at', 'desc')->take(3)->get();
 		return view('admin.index' , ['posts' => $posts]);
 	}
-
-	public function getCategories()
-	{
-		return view('admin.categories');
-	}
-
 	
 }

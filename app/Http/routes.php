@@ -41,11 +41,6 @@ Route::group(['middleware' => ['web']] , function() {
             'as' => 'admin.index'
         ]);
 
-        Route::get('/categories' , [
-            'uses' => 'AdminController@getCategories',
-            'as' => 'admin.categories'
-        ]);
-
         Route::get('/posts' , [
             'uses' => 'PostController@getPosts',
             'as' => 'admin.blog.posts'
@@ -79,6 +74,11 @@ Route::group(['middleware' => ['web']] , function() {
         Route::get('/blog/post/{post_id}/delete' , [
             'uses' => 'PostController@getDeletePost',
             'as' => 'admin.blog.post.delete'
+        ]);
+
+        Route::get('/blog/categories' , [
+            'uses' => 'CategoryController@getCategoryIndex',
+            'as' => 'admin.blog.categories'
         ]);
         
     });

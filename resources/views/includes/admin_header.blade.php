@@ -15,7 +15,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a href="{{ route('admin.blog.posts') }}">Posts</a></li>
-        <li><a href="{{ route('admin.categories') }}">Categories</a></li>
+        <li><a href="{{ route('admin.blog.categories') }}">Categories</a></li>
         <li><a href="">Contact Messages</a></li> 
         <li><a href="">Logout</a></li>    
       </ul>
