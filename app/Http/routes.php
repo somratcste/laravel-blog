@@ -61,14 +61,19 @@ Route::group(['middleware' => ['web']] , function() {
             'as' => 'admin.blog.post.create'
         ]);
 
-        Route::get('/posts/edit' , [
-            'uses' => 'PostController@editPost',
-            'as' => 'admin.blog.edit_post'
+        Route::get('/posts/{post_id}/edit' , [
+            'uses' => 'PostController@getUpdatePost',
+            'as' => 'admin.blog.post.edit'
         ]);
 
         Route::get('/blog/post/{post_id}&{end}' , [
             'uses' => 'PostController@getSinglePost',
             'as' => 'admin.blog.single'
+        ]);
+
+        Route::post('/blog/post/update' , [
+            'uses' => 'PostController@postUpdatePost',
+            'as' => 'admin.blog.post.update'
         ]);
         
     });

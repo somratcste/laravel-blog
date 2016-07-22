@@ -53,12 +53,6 @@ class PostController extends Controller
 		//Attaching Categories 
 		
 		return redirect()->route('admin.index')->with(['success' => 'Post Successfully Created !']);
-	}
-
-
-	public function editPost()
-	{
-		return view('admin.blog.edit_post');
 	}  
 
 	public function shortenText($text , $words_count)
@@ -70,6 +64,36 @@ class PostController extends Controller
 			$text = substr($text , 0 , $pos[$words_count]) . '.....' ;
 		}
 		return $text;
+	}
+
+	public function getUpdatePost($post_id)
+	{
+		$post = Post::find($post_id);
+		if(!$post){
+			return redirect()->route('blog.index')->with(['fail' => 'Page not found !']);
+		}
+		//find categories
+		return view('admin.blog.edit_post' , ['post' => $post]);
+	}
+
+	public function postUpdatePost(Request $request) 
+	{
+		$this->validate($request , [
+			'title' => 'required|max:120' ,
+			'author' => 'required|max:80' ,
+			'body' => 'required'
+		]);
+
+		$post = Post::find($request['post_id']);
+		$post->title = $request['title'];
+		$post->author = $request['author'];
+		$post->body = $request['body'];
+		$post->update();
+
+		//categories
+		
+		return redirect()->route('admin.index')->with(['success' => 'Post Updated Successfully ! ']);
+
 	}
 
 }

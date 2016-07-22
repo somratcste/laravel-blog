@@ -18,7 +18,9 @@
 						<div class="post_body">
 			 				<h4>{{ $post->title }}</h4>
 			 				<p class="author">{{ $post->author }} | {{ $post->created_at }}</p>
-			 				<a href="{{ route('admin.blog.single' , ['post_id' => $post->id  , 'end' => 'admin']) }}">View Post</a> | <a href="{{ route('admin.blog.edit_post') }}">Edit</a> | <a class="delete" href="">Delete</a>
+			 				<a href="{{ route('admin.blog.single' , ['post_id' => $post->id  , 'end' => 'admin']) }}">View Post</a> | 
+			 				<a href="{{ route('admin.blog.post.edit' , ['post_id' => $post->id]) }}">Edit</a> | 
+			 				<a class="delete" href="">Delete</a>
 			 			</div>
 					@endforeach
 		 		@endif		
