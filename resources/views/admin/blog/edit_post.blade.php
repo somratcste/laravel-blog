@@ -26,16 +26,17 @@
 				<div class="col-sm-5">
 					 <select class="form-control" name="categories">
 						<option selected>Select Categories</option>
-						<option value="1">One</option>
-						<option value="2">Two</option>
-						<option value="3">Three</option>
+						
+						@foreach ($categories as $category)
+							<option value="{{ $category->id}}">{{ $category->name }}</option>
+						@endforeach
 					</select>
-					<button type="button" class="btn btn-primary">Add Category</button>
+					{{-- <button type="button" class="btn btn-primary">Add Category</button>
 					<ul class="header_info">
 						<li>Technolgy</li>
 						<li>Food</li>
 						<li>Sport</li>
-					</ul>
+					</ul> --}}
 				</div>
 			</div>
 

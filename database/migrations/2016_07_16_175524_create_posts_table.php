@@ -18,6 +18,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('author');
             $table->text('body');
+            $table->integer('category_id');
         });
     }
 

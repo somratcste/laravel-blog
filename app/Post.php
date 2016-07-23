@@ -8,6 +8,6 @@ class Post extends Model
 {
     public function categories()
     {
-    	return $this->belongsToMany('App\Category' , 'posts_categories');
+    	return $this->belongsTo('App\Category');
     }
 }

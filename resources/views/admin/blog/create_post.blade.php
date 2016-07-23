@@ -26,13 +26,13 @@
 			<div class="form-group">
 				<label for="inputEmail3" class="col-sm-2 control-label">Add Categories</label>
 				<div class="col-sm-5">
-					 <select class="form-control" name="category_select">
+					 <select class="form-control" name="category">
 						<option selected>Select Categories</option>
-						<option value="1">One</option>
-						<option value="2">Two</option>
-						<option value="3">Three</option>
+						
+						@foreach ($categories as $category)
+							<option value="{{ $category->id}}">{{ $category->name }}</option>
+						@endforeach
 					</select>
-					<button type="submit" class="btn btn-primary">Add Category</button>
 					{{-- <ul class="header_info">
 						<li>Technolgy</li>
 					</ul> --}}
