@@ -4,12 +4,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
+use DB;
 
 class PostController extends Controller 
 {
 	public function getBlogIndex()
 	{
-		$posts = Post::orderBy('created_at' , 'desc')->paginate(5);
+		// $posts = Post::orderBy('created_at' , 'desc')->paginate(5);
+		$posts = DB::table('categories')
+					->join('posts' , 'posts.category_id' , '=' , 'categories.id')
+					->select('posts.*' , 'categories.name')
+					->orderBy('created_at' , 'desc')
+		            ->paginate(6);
 		foreach ($posts as $post ) {
 			$post->body = $this->shortenText($post->body , 50);
 		}
@@ -19,6 +25,7 @@ class PostController extends Controller
 	public function getSinglePost($post_id , $end = 'frontend')
 	{
 		$post = Post::find($post_id);
+
 		if(!$post){
 			return redirect()->route('blog.index')->with(['fail' => 'Page not found !']);
 		}
@@ -73,19 +80,12 @@ class PostController extends Controller
 	public function getUpdatePost($post_id)
 	{
 		$post = Post::find($post_id);
-		$categories = Category::all();
-		$post_categories = $post->categories;
-		$post_categories_ids = array();
-		$i = 0;
-		foreach($post_categories as $post_category) {
-			$post_categories_ids[$i] = $post_category->id;
-			$i++;
-		}
+		$categories = Category::all();		
 		if(!$post){
 			return redirect()->route('blog.index')->with(['fail' => 'Page not found !']);
 		}
 		//find categories
-		return view('admin.blog.edit_post' , ['post' => $post , 'categories' => $categories , 'post_categories' => $post_categories , 'post_categories_ids' => $post_categories_ids ]);
+		return view('admin.blog.edit_post' , ['post' => $post , 'categories' => $categories]);
 	}
 
 	public function postUpdatePost(Request $request) 
