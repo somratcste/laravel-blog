@@ -19,6 +19,10 @@
 			<div class="row">
 				@include('includes.admin_footer')
 			</div>
+			<script type="text/javascript">
+				var baseUrl = "{{URL::to('/')}}" ;
+			</script>
+			@yield('scripts')
 		</div>
 	</body>
 </html>

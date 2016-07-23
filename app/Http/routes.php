@@ -80,6 +80,11 @@ Route::group(['middleware' => ['web']] , function() {
             'uses' => 'CategoryController@getCategoryIndex',
             'as' => 'admin.blog.categories'
         ]);
+
+        Route::post('/blog/category/create' , [
+            'uses' => 'CategoryController@postCreateCategory' ,
+            'as' => 'admin.blog.category.create'
+        ]);
         
     });
 
