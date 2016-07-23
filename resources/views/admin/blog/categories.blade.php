@@ -22,9 +22,11 @@
 					<div class="post_body">
 					<h4>{{ $category->name }}</h4>
 					<a data-toggle="modal" data-target="#editCategory<?php echo $i ; ?>" href="">Edit</a> | 
-					<a class="delete" href="">Delete</a>
+					<a data-toggle="modal" data-target="#deleteCategory<?php echo $i ; ?>" class="delete" href="">Delete</a>
 					</div>
-					<!-- Modal -->
+
+
+					<!-- Edit Modal -->
 					<div class="modal fade" id="editCategory<?php echo $i; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 					  <div class="modal-dialog" role="document">
 					    <div class="modal-content">
@@ -48,6 +50,32 @@
 					    </div>
 					  </div>
 					</div>
+					<!--End Edit Modal -->
+
+					<!-- Delete Modal -->
+					<div class="modal fade" id="deleteCategory<?php echo $i; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					  <div class="modal-dialog" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					        <h4 class="modal-title" id="myModalLabel">Delete Category</h4>
+					      </div>
+					      <div class="modal-body">
+					      		<form action="{{ route('admin.blog.category.delete') }}" method="get" class="form-inline">
+					       		Do you want to delete this ?
+					       		<input type="hidden" name="category_id" value="{{ $category->id}}">		
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+					        <button type="submit" class="btn btn-primary">Yes</button>
+					      </div>
+					      </form>
+					    </div>
+					  </div>
+					</div>
+					<!--End Delete Modal -->
+
+
 				@endforeach
 			</div>
 			<section>

@@ -33,10 +33,23 @@ class CategoryController extends Controller
 			'name' => 'required|max:120' ,
 		]);
 
-		$post = Category::find($request['category_id']);
-		$post->name = $request['name'];
-		$post->update();
+		$category = Category::find($request['category_id']);
+		$category->name = $request['name'];
+		$category->update();
 		return redirect()->route('admin.blog.categories')->with(['success' => 'Category Updated Successfully ! ']);
 
 	}
+
+	public function getDeleteCategory(Request $request)
+	{
+		$category = Category::find($request['category_id']);
+		if(!$category){
+			return redirect()->route('blog.index')->with(['fail' => 'Page not found !']);
+		}
+		$category->delete();
+		return redirect()->route('admin.blog.categories')->with(['success' => 'Category Deleted Successfully !']);
+
+	}
+
+
 }
