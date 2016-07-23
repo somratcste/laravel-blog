@@ -16,6 +16,7 @@ class PostController extends Controller
 					->select('posts.*' , 'categories.name')
 					->orderBy('created_at' , 'desc')
 		            ->paginate(6);
+
 		foreach ($posts as $post ) {
 			$post->body = $this->shortenText($post->body , 50);
 		}
@@ -24,7 +25,12 @@ class PostController extends Controller
 
 	public function getSinglePost($post_id , $end = 'frontend')
 	{
-		$post = Post::find($post_id);
+		// $post = Post::find($post_id);
+		$post = DB::table('categories')
+					->join('posts' , 'posts.category_id' , '=' , 'categories.id')
+					->where('posts.id' , $post_id)
+					->select('posts.*' , 'categories.name')
+		            ->first();
 
 		if(!$post){
 			return redirect()->route('blog.index')->with(['fail' => 'Page not found !']);
