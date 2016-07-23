@@ -11,7 +11,7 @@
 				<h4>{{ $post->title }}</h4>
 				<p class="post_info">{{ $post->author }} | {{ $post->created_at }}</p>
 				<p class="post_des">{{ $post->body }}</p>
-				<p class="post_info"> Category : {{ $post->name }} </p>
+				<p class="post_info"> Category : {{ $post->category->name or 'No Data' }} </p>
 				<a class="read_more" href="{{ route('blog.single' , ['post_id' => $post->id  , 'end' => 'frontend']) }}">Read more</a>
 			</div>
 	 	@endforeach
