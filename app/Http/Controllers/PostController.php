@@ -11,16 +11,19 @@ class PostController extends Controller
 	public function getBlogIndex()
 	{
 		// $posts = Post::orderBy('created_at' , 'desc')->paginate(5);
+		$category = Category::all();
 		$posts = DB::table('categories')
 					->join('posts' , 'posts.category_id' , '=' , 'categories.id')
 					->select('posts.*' , 'categories.name')
 					->orderBy('created_at' , 'desc')
 		            ->paginate(6);
 
+			            
+
 		foreach ($posts as $post ) {
-			$post->body = $this->shortenText($post->body , 50);
+			$post->body = $this->shortenText($post->body , 30);
 		}
-		return view('frontend.blog.index' , ['posts' => $posts]);
+		return view('frontend.blog.index' , ['posts' => $posts , 'categories' => $category]);
 	}
 
 	public function getSinglePost($post_id , $end = 'frontend')

@@ -9,13 +9,12 @@ body {
 /* Main Section */
 
 .main {
-	padding: 5px;
 	min-height: 500px;
 }
 .post {
-	border :1px solid #E321A3;
-	padding: 10px;
-	margin-bottom: 10px;
+	border: 1px solid #E321A3;
+    padding: 10px 10px 25px 10px;
+    margin-bottom: 15px;
 }
 
 .post_info {
@@ -43,9 +42,21 @@ body {
 }
 .read_more {
 	font-size: 15px;
+	float: right;
 }
 
 .about_des {
 	padding-top: 10px;
 	font-size: 15px;
 }
+
+.left_sidebar h4{
+	padding-bottom: 5px;
+	border-bottom: 1px solid gray
+}
+
+.left_sidebar_content {
+	color:gray;
+	line-height: 12px;
+}
+
