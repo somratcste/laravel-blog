@@ -10,6 +10,7 @@
  				<h4>{{ $post->title }}</h4>
  				<p class="author">{{ $post->author }} | {{ $post->created_at }}</p>
  				<p class="post_des">{{ $post->body }}</p>
+ 				<p class="author">{{ $post->category->name }}</p>
  			</div>
 		</div>
 @endsection
