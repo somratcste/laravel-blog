@@ -24,7 +24,7 @@
 			<div class="form-group">
 				<label for="inputEmail3" class="col-sm-2 control-label">Add Categories</label>
 				<div class="col-sm-5">
-					 <select class="form-control" name="categories">
+					 <select class="form-control" name="category">
 						<option selected>Select Categories</option>
 						
 						@foreach ($categories as $category)

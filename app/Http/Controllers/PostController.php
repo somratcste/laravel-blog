@@ -11,8 +11,8 @@ class PostController extends Controller
 	public function getBlogIndex()
 	{
 		// $posts = Post::orderBy('created_at' , 'desc')->paginate(5);
-		$category = Category::all();
-		$posts = Post::paginate(6);
+		$category = Category::orderBy('created_at' , 'desc')->get();
+		$posts = Post::orderBy('created_at' , 'desc')->paginate(5);
 
 		foreach ($posts as $post ) {
 			$post->body = $this->shortenText($post->body , 30);
@@ -53,10 +53,9 @@ class PostController extends Controller
 		$post->title = $request['title'];
 		$post->author = $request['author'];
 		$post->body = $request['body'];
-		// $post->save();
 
 		$categoryID = $request['category'];
-		$category = Category::where('id' , $categoryID)->first();
+		$category = Category::find($categoryID);
 		$category->posts()->save($post);
 		
 		
@@ -97,6 +96,10 @@ class PostController extends Controller
 		$post->title = $request['title'];
 		$post->author = $request['author'];
 		$post->body = $request['body'];
+
+		$categoryID = $request['category'];
+		$category = Category::find($categoryID);
+		$category->posts()->save($post);
 		$post->update();
 
 		//categories
