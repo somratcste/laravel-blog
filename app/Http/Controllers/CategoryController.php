@@ -26,4 +26,17 @@ class CategoryController extends Controller
 		}
 		return redirect()->route('admin.blog.categories')->with(['success' => 'Category Created Successfully ! ']);
 	}
+
+	public function categoryUpdate(Request $request) 
+	{
+		$this->validate($request , [
+			'name' => 'required|max:120' ,
+		]);
+
+		$post = Category::find($request['category_id']);
+		$post->name = $request['name'];
+		$post->update();
+		return redirect()->route('admin.blog.categories')->with(['success' => 'Category Updated Successfully ! ']);
+
+	}
 }

@@ -85,6 +85,11 @@ Route::group(['middleware' => ['web']] , function() {
             'uses' => 'CategoryController@postCreateCategory' ,
             'as' => 'admin.blog.category.create'
         ]);
+
+        Route::post('/blog/category/update' , [
+            'uses' => 'CategoryController@categoryUpdate',
+            'as' => 'admin.blog.category.update'
+        ]);
         
     });
 

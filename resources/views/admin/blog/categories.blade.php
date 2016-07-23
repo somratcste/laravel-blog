@@ -16,11 +16,38 @@
 
 					</form>
 				</div>
+				<?php $i=1; ?>
 				@foreach ($categories as $category)
+				<?php $i++; ?>
 					<div class="post_body">
 					<h4>{{ $category->name }}</h4>
-					<a href="">Edit</a> | <a class="delete" href="">Delete</a>
-				</div>
+					<a data-toggle="modal" data-target="#editCategory<?php echo $i ; ?>" href="">Edit</a> | 
+					<a class="delete" href="">Delete</a>
+					</div>
+					<!-- Modal -->
+					<div class="modal fade" id="editCategory<?php echo $i; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					  <div class="modal-dialog" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					        <h4 class="modal-title" id="myModalLabel">Edit Category</h4>
+					      </div>
+					      <div class="modal-body">
+					      		<form action="{{ route('admin.blog.category.update') }}" method="post" class="form-inline">
+					       		<input type="text" class="form-control" id="exampleInputName2" name="name" id="name" value="{{ $category->name }}">
+					       		<input type="hidden" name="_token" value="{{Session::token()}}">
+					       		<input type="hidden" name="category_id" value="{{ $category->id}}">
+
+					       		
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					        <button type="submit" class="btn btn-primary">Save changes</button>
+					      </div>
+					      </form>
+					    </div>
+					  </div>
+					</div>
 				@endforeach
 			</div>
 			<section>
