@@ -49,7 +49,7 @@ Route::group(['middleware' => ['web']] , function() {
         'as' => 'admin.login'
     ]);
 
-    Route::group(['prefix' => '/admin'] , function() {
+    Route::group(['prefix' => '/admin' , 'middleware' => 'auth'] , function() {
 
         Route::get('/logout' , [
             'uses' => 'AdminController@getLogout',
