@@ -4,7 +4,7 @@
     <div class="col-md-8">
         @include('includes.info-box')
         <div class="header">
-            <button type="button" class="btn btn-primary">Show all Messages</button>
+            <button type="button" class="btn btn-primary">View all Messages</button>
         </div>
         <div class="post">
             @if(count($messages) == 0)

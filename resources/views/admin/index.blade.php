@@ -28,7 +28,7 @@
  		</div>
  		<div class="col-md-6">
 			<div class="header">
-				<button type="button" class="btn btn-primary">Show all Messages</button>
+				<a href="{{route('admin.blog.contact')}}"><button type="button" class="btn btn-primary">Show all Messages</button></a>
 			</div>
  			<div class="post">
 				@if(count($messages) == 0)
