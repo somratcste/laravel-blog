@@ -16,6 +16,7 @@
       <ul class="nav navbar-nav">
         <li {{ Request::is('about') ? 'class=active' : ''}}><a href="{{ route('about') }}">About</a></li>     
         <li {{ Request::is('contact') ? 'class=active' : ''}}><a href="{{ route('contact') }}">Contact</a></li>
+        <li {{ Request::is('admin/login') ? 'class=active' : '' }}><a href="{{ route('admin.login') }}">Login</a> </li>
       </ul>
     </div>
   </div>
