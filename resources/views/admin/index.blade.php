@@ -34,7 +34,25 @@
 	 			<div class="post_body">
 	 				<h4>A Test Mail</h4>
 	 				<p class="author"> Sender : G. M. Somrat | 2016-12-06 07:20:25</p>
-	 				<a href="">View </a> | <a class="delete" href="">Delete</a>
+	 				<a data-toggle="modal" data-target="#viewMessageModal" href="">View </a> | <a class="delete" href="">Delete</a>
+					<!-- Modal start -->
+					<div class="modal fade" id="viewMessageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									<h4 class="modal-title" id="myModalLabel">View Message</h4>
+								</div>
+								<div class="modal-body">
+									...
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- End Modal -->
 	 			</div>
  			</div>
  		</div>
