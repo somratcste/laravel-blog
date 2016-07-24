@@ -100,6 +100,16 @@ Route::group(['middleware' => ['web']] , function() {
             'uses' => 'CategoryController@getDeleteCategory',
             'as' => 'admin.blog.category.delete'
         ]);
+
+        Route::get('/blog/message/delete' , [
+            'uses' => 'ContactMessageController@getDeleteMessage',
+            'as' => 'admin.blog.message.delete'
+        ]);
+
+        Route::get('/contact' , [
+            'uses' => 'ContactMessageController@getMessages',
+            'as' => 'admin.blog.contact'
+        ]);
         
     });
 

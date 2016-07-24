@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\ContactMessage;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
@@ -10,7 +11,7 @@ class PostController extends Controller
 {
 	public function getBlogIndex()
 	{
-		// $posts = Post::orderBy('created_at' , 'desc')->paginate(5);
+
 		$category = Category::orderBy('created_at' , 'desc')->get();
 		$posts = Post::orderBy('created_at' , 'desc')->paginate(5);
 

@@ -33,4 +33,21 @@ class ContactMessageController extends Controller
 
         return redirect()->route('contact')->with(['success' => 'Message Successfully Sent']);
     }
+
+    public function getDeleteMessage(Request $request)
+    {
+        $contact_message = ContactMessage::find($request['message_id']);
+        if(!$contact_message){
+            return redirect()->route('blog.index')->with(['fail' => 'Page not found !']);
+        }
+        $contact_message->delete();
+        return redirect()->route('admin.blog.contact')->with(['success' => 'Message Deleted Successfully !']);
+
+    }
+
+    public function getMessages()
+    {
+        $messages = ContactMessage::orderBy('created_at' , 'desc')->paginate(5);
+        return view('admin.other.contact_message' , ['messages' => $messages]);
+    }
 }
