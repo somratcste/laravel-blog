@@ -13,7 +13,7 @@
 
 Route::group(['middleware' => ['web']] , function() {
 
-    Route::get('/' , [
+    Route::get('/{category?}' , [
     	'uses' => 'PostController@getBlogIndex',
     	'as' => 'blog.index'
     ]);

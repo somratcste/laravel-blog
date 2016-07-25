@@ -9,16 +9,24 @@ use DB;
 
 class PostController extends Controller 
 {
-	public function getBlogIndex()
+	public function getBlogIndex($category = null)
 	{
+	    if(!$category) {
+            $categories = Category::orderBy('created_at', 'desc')->get();
+            $posts = Post::orderBy('created_at', 'desc')->paginate(5);
 
-		$category = Category::orderBy('created_at' , 'desc')->get();
-		$posts = Post::orderBy('created_at' , 'desc')->paginate(5);
-
-		foreach ($posts as $post ) {
-			$post->body = $this->shortenText($post->body , 30);
-		}
-		return view('frontend.blog.index' , ['posts' => $posts , 'categories' => $category]);
+            foreach ($posts as $post) {
+                $post->body = $this->shortenText($post->body, 30);
+            }
+        } else {
+            $categories = Category::orderBy('created_at' , 'desc')->get();
+            $category = Category::where('name' , $category)->first();
+            $posts = Post::where('category_id' , $category->id)->orderBy('created_at' , 'desc')->paginate(5);
+            foreach ($posts as $post) {
+                $post->body = $this->shortenText($post->body, 30);
+            }
+        }
+		return view('frontend.blog.index' , ['posts' => $posts , 'categories' => $categories]);
 	}
 
 	public function getSinglePost($post_id , $end = 'frontend')

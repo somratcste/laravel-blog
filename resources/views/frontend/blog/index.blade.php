@@ -6,6 +6,11 @@
  
  @section('content')
  	<div class="col-md-9">
+		@if(!empty(Request::Segment(1)))
+			<section class="filter-bar">
+				Category all posts. <a href="{{ route('blog.index') }}">Show All Posts</a>
+			</section>
+		@endif
 	 	@foreach ($posts as $post)
 	 		<div class="post">
 				<h4>{{ $post->title }}</h4>
@@ -32,7 +37,7 @@
 		<div class="left_sidebar">
 			<h4>All Categories </h4>
 			@foreach ($categories as $category)
-				<a href=""><p class="left_sidebar_content">{{ $category->name }}</p></a>
+				<a href="{{route('blog.index' , ['category' => $category->name])}}"><p class="left_sidebar_content">{{ $category->name }}</p></a>
 		 	@endforeach
 		</div>
 	</div>
