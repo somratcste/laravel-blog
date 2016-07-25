@@ -32,10 +32,11 @@ class PostController extends Controller
 	public function getSinglePost($post_id , $end = 'frontend')
 	{
 		$post = Post::find($post_id);
+        $categories = Category::all();
 		if(!$post){
 			return redirect()->route('blog.index')->with(['fail' => 'Page not found !']);
 		}
-		return view($end . '.blog.single' , ['post' => $post]);
+		return view($end . '.blog.single' , ['post' => $post , 'categories' => $categories]);
 	}
 
 	public function getPosts()
