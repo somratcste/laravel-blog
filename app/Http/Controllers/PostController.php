@@ -34,7 +34,7 @@ class PostController extends Controller
                 $post->body = $this->shortenText($post->body, 30);
             }
         }
-		return view('frontend.blog.index' , ['posts' => $posts , 'categories' => $categories]);
+		return view('frontend.blog.index' , ['posts' => $posts , 'categories' => $categories , 'category' => $category]);
 	}
 
 	public function getSinglePost($post_id , $end = 'frontend')

@@ -8,7 +8,7 @@
  	<div class="col-md-9">
 		@if(!empty(Request::Segment(1)))
 			<section class="alert alert-info">
-				Category all posts. <a href="{{ route('blog.index') }}">Show All Posts</a>
+				Category : {{$category->name }} - View All Posts.
 			</section>
 		@endif
 	 	@foreach ($posts as $post)
