@@ -12,14 +12,22 @@ class PostController extends Controller
 	public function getBlogIndex($category = null)
 	{
 	    if(!$category) {
-            $categories = Category::orderBy('created_at', 'desc')->get();
+            $categories = DB::table('categories')
+                ->join('posts' , 'categories.id' , '=' , 'posts.category_id')
+                ->select('categories.name')
+                ->distinct()
+                ->get();
             $posts = Post::orderBy('created_at', 'desc')->paginate(5);
 
             foreach ($posts as $post) {
                 $post->body = $this->shortenText($post->body, 30);
             }
         } else {
-            $categories = Category::orderBy('created_at' , 'desc')->get();
+            $categories = DB::table('categories')
+                ->join('posts' , 'categories.id' , '=' , 'posts.category_id')
+                ->select('categories.name')
+                ->distinct()
+                ->get();
             $category = Category::where('name' , $category)->first();
             $posts = Post::where('category_id' , $category->id)->orderBy('created_at' , 'desc')->paginate(5);
             foreach ($posts as $post) {
@@ -31,8 +39,12 @@ class PostController extends Controller
 
 	public function getSinglePost($post_id , $end = 'frontend')
 	{
+        $categories = DB::table('categories')
+                    ->join('posts' , 'categories.id' , '=' , 'posts.category_id')
+                    ->select('categories.name')
+                    ->distinct()
+                    ->get();
 		$post = Post::find($post_id);
-        $categories = Category::all();
 		if(!$post){
 			return redirect()->route('blog.index')->with(['fail' => 'Page not found !']);
 		}
