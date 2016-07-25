@@ -7,7 +7,7 @@
  @section('content')
  	<div class="col-md-9">
 		@if(!empty(Request::Segment(1)))
-			<section class="filter-bar">
+			<section class="alert alert-info">
 				Category all posts. <a href="{{ route('blog.index') }}">Show All Posts</a>
 			</section>
 		@endif

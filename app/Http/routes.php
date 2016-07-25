@@ -56,7 +56,7 @@ Route::group(['middleware' => ['web']] , function() {
             'as' => 'admin.logout'
         ]);
 
-        Route::get('/' , [
+        Route::get('/dashboard' , [
             'uses' => 'AdminController@getIndex',
             'as' => 'admin.index'
         ]);
