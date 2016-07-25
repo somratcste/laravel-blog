@@ -25,11 +25,11 @@ Route::group(['middleware' => ['web']] , function() {
 
     /*other routes */
 
-    Route::get('/about' , function() {
+    Route::get('/blog/about' , function() {
     	return view('frontend.other.about');
     })->name('about');
 
-    Route::get('/contact' , [
+    Route::get('/blog/contact' , [
     	'uses' => 'ContactMessageController@getControllerIndex',
     	'as' => 'contact'
     ]);

@@ -14,8 +14,8 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li {{ Request::is('about') ? 'class=active' : ''}}><a href="{{ route('about') }}">About</a></li>     
-        <li {{ Request::is('contact') ? 'class=active' : ''}}><a href="{{ route('contact') }}">Contact</a></li>
+        <li {{ Request::is('blog/about') ? 'class=active' : ''}}><a href="{{ route('about') }}">About</a></li>
+        <li {{ Request::is('blog/contact') ? 'class=active' : ''}}><a href="{{ route('contact') }}">Contact</a></li>
         <li {{ Request::is('admin/login') ? 'class=active' : '' }}><a href="{{ route('admin.login') }}">Login</a> </li>
       </ul>
     </div>
